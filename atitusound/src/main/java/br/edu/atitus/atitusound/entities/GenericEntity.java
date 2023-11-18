@@ -15,7 +15,7 @@ public abstract class GenericEntity {
 	private UUID uuid;
 	@Column(nullable = false, length = 150)
 	private String name;
-	
+
 	public UUID getUuid() {
 		return uuid;
 	}
@@ -28,5 +28,5 @@ public abstract class GenericEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

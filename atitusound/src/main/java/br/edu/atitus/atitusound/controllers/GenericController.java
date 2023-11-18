@@ -24,9 +24,9 @@ import br.edu.atitus.atitusound.services.GenericService;
 public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 
 	public abstract GenericService<TEntidade> getService();
-	
+
 	protected abstract TEntidade convertDTO2Entity(TDto dto);
-	
+
 	@GetMapping("/{uuid}")
 	public ResponseEntity<TEntidade> getById(@PathVariable UUID uuid) {
 		Optional<TEntidade> entidade;
@@ -40,7 +40,7 @@ public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 		else
 			return ResponseEntity.ok(entidade.get());
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<Page<List<TEntidade>>> get(@PageableDefault(page = 0, size = 10, sort = "name", direction = Direction.ASC) Pageable pageable,@RequestParam String name) {
 		Page<List<TEntidade>> lista;
@@ -51,7 +51,7 @@ public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 		}
 		return ResponseEntity.ok(lista);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<TEntidade> post(@RequestBody TDto dto){
 		TEntidade entidade = convertDTO2Entity(dto);
@@ -62,7 +62,7 @@ public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(entidade);
 	}
-	
+
 	@PutMapping("/{uuid}")
 	public ResponseEntity<TEntidade> put(@RequestBody TDto dto,@PathVariable UUID uuid){
 		TEntidade entidade = convertDTO2Entity(dto);
@@ -75,7 +75,7 @@ public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 		return ResponseEntity.status(HttpStatus.OK).body(entidade);
 		//return ResponseEntity.ok(entidade);
 	}
-	
+
 	@DeleteMapping("/{uuid}")
 	public ResponseEntity<?> delete(@PathVariable UUID uuid){
 		try {
@@ -85,5 +85,5 @@ public abstract class GenericController<TEntidade extends GenericEntity, TDto> {
 		}
 		return ResponseEntity.ok().build();
 	}
-	
+
 }

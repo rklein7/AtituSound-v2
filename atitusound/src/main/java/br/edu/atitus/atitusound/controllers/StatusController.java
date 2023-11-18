@@ -16,7 +16,7 @@ public class StatusController {
 	public String getStatus() {
 		return "Aplicação está no Ar!";
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<String> postStatus(@RequestBody(required = false) String textoEntrada) {
 		return ResponseEntity.status(HttpStatus.CREATED).body("Texto recebido: " + textoEntrada);

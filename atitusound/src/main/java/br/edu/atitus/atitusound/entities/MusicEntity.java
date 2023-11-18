@@ -12,14 +12,14 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_music")
 public class MusicEntity extends GenericEntity{
-	
+
 	private Duration duration;
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "artist_uuid")
 	private ArtistEntity artist;
 	private int like_count;
 	private String url;
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -45,5 +45,5 @@ public class MusicEntity extends GenericEntity{
 		this.like_count = like_count;
 	}
 
-	
+
 }

@@ -3,12 +3,12 @@ package br.edu.atitus.atitusound.dtos;
 import java.time.Duration;
 
 public class MusicDTO {
-	
+
 	private String name;
 	private Duration duration;
 	private String url;
 	private ArtistOnlyUUID artist;
-	
+
 	public String getName() {
 		return name;
 	}

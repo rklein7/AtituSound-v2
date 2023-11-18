@@ -17,6 +17,7 @@ public class ConfigSecurity {
 		this.authTokenFilter = authTokenFilter;
 	}
 
+
 	@Bean
 	public SecurityFilterChain getFilterChain(HttpSecurity http) throws Exception {
 		http

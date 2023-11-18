@@ -12,7 +12,7 @@ import br.edu.atitus.atitusound.entities.ArtistEntity;
 
 @Repository
 public interface ArtistRepository extends GenericRepository<ArtistEntity>{
-	
-	
+
+
 
 }

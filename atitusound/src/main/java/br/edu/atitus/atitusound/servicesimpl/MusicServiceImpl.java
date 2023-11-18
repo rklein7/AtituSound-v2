@@ -8,7 +8,7 @@ import br.edu.atitus.atitusound.services.MusicService;
 public class MusicServiceImpl implements MusicService{
 
 	private final MusicRepository musicRepository;
-	
+
 	public MusicServiceImpl(MusicRepository musicRepository) {
 		super();
 		this.musicRepository = musicRepository;

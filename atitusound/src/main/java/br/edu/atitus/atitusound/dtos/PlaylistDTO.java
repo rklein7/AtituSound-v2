@@ -1,7 +1,7 @@
 package br.edu.atitus.atitusound.dtos;
 
 public class PlaylistDTO {
-	
+
 	private String name;
 	private boolean public_share;
 	public String getName() {
@@ -16,6 +16,6 @@ public class PlaylistDTO {
 	public void setPublic_share(boolean public_share) {
 		this.public_share = public_share;
 	}
-	
+
 
 }

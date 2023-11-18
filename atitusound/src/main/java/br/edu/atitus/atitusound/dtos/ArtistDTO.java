@@ -1,7 +1,7 @@
 package br.edu.atitus.atitusound.dtos;
 
 public class ArtistDTO {
-	
+
 	private String name;
 	private String image;
 	public String getName() {
@@ -16,6 +16,6 @@ public class ArtistDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 
 }

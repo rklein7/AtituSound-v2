@@ -1,7 +1,7 @@
 package br.edu.atitus.atitusound.dtos;
 
 public class UserDTO {
-	
+
 	private String name;
 	private String username;
 	private String password;
@@ -30,6 +30,6 @@ public class UserDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 
 }

@@ -2,7 +2,11 @@ package br.edu.atitus.atitusound.entities;
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_playlist")
@@ -14,35 +18,19 @@ public class PlaylistEntity extends GenericEntity{
 	@JoinTable(name = "tb_playlist_music")
 	private List<MusicEntity> musics;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name ="user_uuid")
-	private UserEntity user;
-
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
-	}
-
 	public boolean getPublic_share() {
-
 		return public_share;
 	}
 
 	public void setPublic_share(boolean public_share) {
-
 		this.public_share = public_share;
 	}
 
 	public List<MusicEntity> getMusics() {
-
 		return musics;
 	}
 
 	public void setMusics(List<MusicEntity> musics) {
-
 		this.musics = musics;
 	}
 

@@ -29,7 +29,7 @@ public class ArtistController extends GenericController<ArtistEntity, ArtistDTO>
 	public GenericService<ArtistEntity> getService() {
 		return artistService;
 	}
-	
-	
+
+
 
 }

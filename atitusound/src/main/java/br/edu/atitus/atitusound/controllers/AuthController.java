@@ -1,22 +1,21 @@
 package br.edu.atitus.atitusound.controllers;
 
-import br.edu.atitus.atitusound.dtos.SigninDTO;
-import br.edu.atitus.atitusound.utils.JwtUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.atitus.atitusound.dtos.SigninDTO;
 import br.edu.atitus.atitusound.dtos.UserDTO;
 import br.edu.atitus.atitusound.entities.UserEntity;
 import br.edu.atitus.atitusound.services.UserService;
-
-import javax.naming.AuthenticationException;
+import br.edu.atitus.atitusound.utils.JwtUtils;
 
 @RestController
 @RequestMapping("/auth")
@@ -38,6 +37,7 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<String> signin(@RequestBody SigninDTO signin) {
+		//Realizar a autenticação
 		try {
 			auth.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(signin.getUsername(), signin.getPassword()));
 		} catch (AuthenticationException e) {
@@ -45,6 +45,7 @@ public class AuthController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).header("error", e.getMessage()).build();
 		}
+		//Gerar o Token e retornar para o usuário
 		String jwt = JwtUtils.generateTokenFromUsername(signin.getUsername());
 		return ResponseEntity.ok(jwt);
 	}

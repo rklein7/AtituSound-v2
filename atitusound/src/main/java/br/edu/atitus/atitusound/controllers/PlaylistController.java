@@ -8,7 +8,7 @@ import br.edu.atitus.atitusound.services.PlaylistService;
 public class PlaylistController extends GenericController<PlaylistEntity, PlaylistDTO>{
 
 	private final PlaylistService playlistService;
-	
+
 	public PlaylistController(PlaylistService playlistService) {
 		super();
 		this.playlistService = playlistService;
@@ -26,6 +26,6 @@ public class PlaylistController extends GenericController<PlaylistEntity, Playli
 		playlist.setPublic_share(dto.getPublic_share());
 		return playlist;
 	}
-	
+
 
 }
