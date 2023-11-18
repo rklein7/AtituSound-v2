@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
 	private final PasswordEncoder encoder;
 	private final UserRepository userRepository;
-	
+
 	public UserServiceImpl(UserRepository userRepository, PasswordEncoder encoder) {
 		super();
 		this.encoder = encoder;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			throw new Exception("Username inválido!");
 		if (entidade.getPassword() == null || entidade.getPassword().isEmpty())
 			throw new Exception("Password inválido!");
-		
+
 		entidade.setPassword(encoder.encode(entidade.getPassword()));
 	}
 
@@ -44,18 +44,18 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com este nome"));
 		return user;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

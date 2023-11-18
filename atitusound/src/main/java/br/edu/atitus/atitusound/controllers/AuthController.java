@@ -23,13 +23,13 @@ import javax.naming.AuthenticationException;
 public class AuthController {
 	private final UserService userService;
 	private final AuthenticationConfiguration auth;
-		
+
 	private UserEntity convertDTO2Entity(UserDTO dto) {
 		var user = new UserEntity();
 		BeanUtils.copyProperties(dto, user);
 		return user;
 	}
-	
+
 	public AuthController(UserService userService, AuthenticationConfiguration auth) {
 		super();
 		this.userService = userService;

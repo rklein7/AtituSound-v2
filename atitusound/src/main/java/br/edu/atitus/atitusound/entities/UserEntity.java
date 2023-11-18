@@ -17,11 +17,11 @@ public class UserEntity extends GenericEntity implements UserDetails{
 
 	@Column(nullable = false)
 	private String username;
-	
+
 	@Column(nullable = false)
 	@JsonIgnore
 	private String password;
-	
+
 	@Column(nullable = false)
 	private String email;
 
@@ -73,6 +73,6 @@ public class UserEntity extends GenericEntity implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	
+
+
 }
