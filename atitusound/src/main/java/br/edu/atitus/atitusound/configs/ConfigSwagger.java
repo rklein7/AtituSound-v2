@@ -18,7 +18,7 @@ public class ConfigSwagger {
                         .description("Documentação Back-end AtituSound")
                         .version("Version 1.0.0")
                         .contact(new Contact()
-                                .name("Rafael Augusto Klein")
+                                .name("Rafael Augusto Klein e Gabriel Martinelli")
                                 .email("1134873@atitus.edu.br")));
     }
 
