@@ -6,29 +6,19 @@ import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.data.repository.query.Param;
 
 import br.edu.atitus.atitusound.entities.ArtistEntity;
 import br.edu.atitus.atitusound.entities.GenericEntity;
 
 @NoRepositoryBean
-public interface GenericRepository<TEntidade extends GenericEntity> extends JpaRepository<TEntidade, UUID>{
+public interface GenericRepository <TEntidade extends GenericEntity> extends JpaRepository<TEntidade, UUID>{
 
-	boolean existsByNameAndUuidNot(String name, UUID uuid);
+	Boolean existsByName(String name);
 
-	boolean existsByName(String name);
-	//select * from tb_artist where name = 'valor_parametro';
+	Boolean existsByNameAndUuidNot(String name, UUID uuid);
 
-	Page<List<TEntidade>> findByNameContainingIgnoreCase(Pageable pageable, String name);
+	Page<List<TEntidade>> findByNameContainingIgnoreCase(String name, Pageable pageable);
 
-	//@Query(value = "update tb_artist set name = ?1 where uuid = ?2", nativeQuery = true)
-	@Query(value = "update #{#entityName} set name = :name where uuid = :uuid")
-	TEntidade updateName(@Param("name") String name, @Param("uuid") UUID uuid);
-	/*
-	 * default boolean existsByNameAndUuidNotOrUuidIsNull(String name, UUID uuid) {
-	 * if (uuid == null) { return existsByName(name); } else { return
-	 * existsByNameAndUuidNot(name, uuid); } }
-	 */
+
 }

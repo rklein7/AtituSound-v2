@@ -7,6 +7,7 @@ public class ArtistDTO {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -16,6 +17,5 @@ public class ArtistDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 
 }

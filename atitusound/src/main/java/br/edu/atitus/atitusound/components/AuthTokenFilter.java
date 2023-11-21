@@ -1,4 +1,4 @@
-package br.edu.atitus.atitusound.configs;
+package br.edu.atitus.atitusound.components;
 
 import java.io.IOException;
 

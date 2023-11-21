@@ -14,17 +14,20 @@ import br.edu.atitus.atitusound.repositories.GenericRepository;
 import br.edu.atitus.atitusound.services.ArtistService;
 
 @Service
-public class ArtistServiceImpl implements ArtistService {
-	private final ArtistRepository artistRepository;
+public class ArtistServiceImpl implements ArtistService{
 
-	public ArtistServiceImpl(ArtistRepository artistRepository) {
+	private final ArtistRepository repository;
+
+	public ArtistServiceImpl(ArtistRepository repository) {
 		super();
-		this.artistRepository = artistRepository;
+		this.repository = repository;
 	}
 
 	@Override
 	public GenericRepository<ArtistEntity> getRepository() {
-		return artistRepository;
+		return repository;
 	}
+
+
 
 }

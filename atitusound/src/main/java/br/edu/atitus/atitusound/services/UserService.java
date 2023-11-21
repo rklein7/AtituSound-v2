@@ -6,4 +6,8 @@ import br.edu.atitus.atitusound.entities.UserEntity;
 
 public interface UserService extends GenericService<UserEntity>, UserDetailsService{
 
+
+
+
+
 }

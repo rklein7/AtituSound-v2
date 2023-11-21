@@ -1,5 +1,8 @@
 package br.edu.atitus.atitusound.utils;
 
+import java.security.Key;
+import java.util.Date;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -7,10 +10,8 @@ import io.jsonwebtoken.security.InvalidKeyException;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.security.Key;
-import java.util.Date;
-
 public class JwtUtils {
+
 
     private final static String jwtSecret = "=====================AtitusSecretJWT=====================";
     private final static int jwtExpirationMs = 86400000;
@@ -18,8 +19,6 @@ public class JwtUtils {
     private static Key key() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
-
-
 
 
     public static String generateTokenFromUsername(String username) throws InvalidKeyException {
@@ -30,6 +29,8 @@ public class JwtUtils {
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
+
+
 
     public static String getUserNameFromJwtToken(String token) {
         return Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJws(token).getBody().getSubject();
@@ -51,6 +52,8 @@ public class JwtUtils {
             return false;
         }
     }
+
+
 
 
 }

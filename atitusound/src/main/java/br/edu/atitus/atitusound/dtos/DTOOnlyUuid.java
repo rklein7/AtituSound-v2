@@ -2,7 +2,7 @@ package br.edu.atitus.atitusound.dtos;
 
 import java.util.UUID;
 
-public class ArtistOnlyUUID {
+public class DTOOnlyUuid {
 
 	private UUID uuid;
 
@@ -13,6 +13,4 @@ public class ArtistOnlyUUID {
 	public void setUuid(UUID uuid) {
 		this.uuid = uuid;
 	}
-
-
 }

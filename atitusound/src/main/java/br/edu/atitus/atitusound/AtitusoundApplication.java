@@ -8,7 +8,6 @@ public class AtitusoundApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtitusoundApplication.class, args);
-		System.out.println("Aplicação está no AR!!!");
 	}
 
 }

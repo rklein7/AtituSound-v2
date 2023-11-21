@@ -1,37 +1,42 @@
 package br.edu.atitus.atitusound.controllers;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.edu.atitus.atitusound.dtos.MusicDTO;
 import br.edu.atitus.atitusound.entities.ArtistEntity;
 import br.edu.atitus.atitusound.entities.MusicEntity;
 import br.edu.atitus.atitusound.services.GenericService;
 import br.edu.atitus.atitusound.services.MusicService;
 
-public class MusicController extends GenericController<MusicEntity, MusicDTO>{
+@RestController
+@RequestMapping("/musics")
+public class MusicController extends GenericController<MusicEntity, MusicDTO> {
 
-	private final MusicService musicService;
 
-	public MusicController(MusicService musicService) {
+	private final MusicService service;
+
+	public MusicController(MusicService service) {
 		super();
-		this.musicService = musicService;
+		this.service = service;
 	}
 
 	@Override
 	public GenericService<MusicEntity> getService() {
-		return musicService;
+		return service;
 	}
 
 	@Override
 	protected MusicEntity convertDTO2Entity(MusicDTO dto) {
-		MusicEntity music = new MusicEntity();
-		music.setName(dto.getName());
-		music.setDuration(dto.getDuration());
-		music.setUrl(dto.getUrl());
+		MusicEntity entidade = new MusicEntity();
+		entidade.setName(dto.getName());
+		entidade.setDuration(dto.getDuration());
+		entidade.setUrl(dto.getUrl());
 
-		ArtistEntity artist = new ArtistEntity();
-		artist.setUuid(dto.getArtist().getUuid());
-
-		music.setArtist(artist);
-		return null;
+		ArtistEntity entidadeArtista = new ArtistEntity();
+		entidadeArtista.setUuid(dto.getArtist().getUuid());
+		entidade.setArtist(entidadeArtista);
+		return entidade;
 	}
 
 }

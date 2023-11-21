@@ -4,6 +4,7 @@ public class PlaylistDTO {
 
 	private String name;
 	private boolean public_share;
+
 	public String getName() {
 		return name;
 	}

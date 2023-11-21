@@ -7,61 +7,77 @@ import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
 import br.edu.atitus.atitusound.entities.GenericEntity;
 import br.edu.atitus.atitusound.repositories.GenericRepository;
 
 public interface GenericService<TEntidade extends GenericEntity> {
 
+
 	GenericRepository<TEntidade> getRepository();
 
-	default void validateFindByName(Pageable pageable, String name) throws Exception {
-
-	}
-
-	default Page<List<TEntidade>> findByNameContainingIgnoreCase(Pageable pageable, String name) throws Exception {
-		validateFindByName(pageable, name);
-		return getRepository().findByNameContainingIgnoreCase(pageable, name);
-	}
-
-	default void validateSave(TEntidade entidade) throws Exception {
-		if (entidade.getName() == null || entidade.getName().isEmpty())
-			throw new Exception("Campo Name Inválido!");
-
-		if (entidade.getUuid() == null) {
-			if (getRepository().existsByName(entidade.getName()))
-				throw new Exception("Já existe registro com este nome!");
+	default void validade (TEntidade entity) throws Exception{
+		if (entity.getName() == null || entity.getName().isEmpty())
+			throw new Exception("Campo nome Inválido");
+		if (entity.getUuid() == null) {
+			if(getRepository().existsByName(entity.getName()))
+				throw new Exception("Não existe registro com esse nome!!");
 		} else {
-			if (!getRepository().existsById(entidade.getUuid()))
-				throw new Exception("Registro não encontrado com este UUID");
-			if (getRepository().existsByNameAndUuidNot(entidade.getName(), entidade.getUuid()))
-				throw new Exception("Já existe registro com este nome!");
+			if (!getRepository().existsById(entity.getUuid()))
+				throw new Exception("Não existe registro com esse UUID");
+			if (getRepository().existsByNameAndUuidNot(entity.getName(), entity.getUuid()))
+				throw new Exception("Já existe registro com esse nome!");
 		}
+
+
 	}
 
-	default TEntidade save(TEntidade entidade) throws Exception {
-		validateSave(entidade);
-		getRepository().save(entidade);
-		return entidade;
+
+	default TEntidade save(TEntidade entity) throws Exception {
+		validade(entity);
+		getRepository().save(entity);
+		return entity;
 	}
+
 
 	default List<TEntidade> findAll() throws Exception {
+
 		return getRepository().findAll();
 	}
-	default void validateFindById(UUID uuid) throws Exception {
+
+
+
+	default void validadeFindByName(String name, Pageable pageable) throws Exception{
 
 	}
+
+	default Page<List<TEntidade>> findByNameContainingIgnoreCase(String name, Pageable pageable) throws Exception {
+		validadeFindByName(name, pageable);
+		return getRepository().findByNameContainingIgnoreCase(name, pageable);
+	}
+
+
+	default void validadeFindById(UUID uuid) throws Exception{
+
+	}
+
 
 	default Optional<TEntidade> findById(UUID uuid) throws Exception {
-		validateFindById(uuid);
+		validadeFindById(uuid);
 		return getRepository().findById(uuid);
 	}
-	default void validateDeleteById(UUID uuid) throws Exception {
-		if (!getRepository().existsById(uuid))
-			throw new Exception("Registro não encontrado com este UUID");
+
+
+	default void validateDeleteById(UUID uuid) throws Exception{
+		if(!getRepository().existsById(uuid))
+			throw new Exception("Não existe registro com esse UUID");
 	}
 
-	default void deleteById(UUID uuid) throws Exception {
-		validateDeleteById(uuid);
+
+
+	default void deleteById(UUID uuid) throws Exception{
 		getRepository().deleteById(uuid);
+
 	}
+
 }
